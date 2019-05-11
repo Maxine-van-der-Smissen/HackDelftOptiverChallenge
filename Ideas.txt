@@ -3,3 +3,7 @@ Ideas:
 machine learning algorithm with testing algorithm to teach when to buy, sell or hold.
 statistical strategies for trading
 getting anything to work (working demo)
+
+Ideas:
+Collecting Realtime data right now to test on 
+Backtest the strategies
