@@ -6,7 +6,7 @@ class Communication:
     def __init__(self, address):
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         print("test1")
-        self.sock.bind(("",8000))
+        self.sock.bind(("",5005))
         print("test1")
         self.address = address
         print("test1")
