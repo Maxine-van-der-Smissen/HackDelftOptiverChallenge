@@ -37,6 +37,7 @@ class TinderTradingTechnique:
     
 
     def decide(self, sp, exp):
+        if(len(sp) < 250): return
         s = self.spread()
         threshold = 1
         mean = np.mean(s)
