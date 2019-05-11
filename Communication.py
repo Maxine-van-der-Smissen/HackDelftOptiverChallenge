@@ -5,15 +5,11 @@ class Communication:
     
     def __init__(self, address):
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        print("test1")
         self.sock.bind(("",5005))
-        print("test1")
         self.address = address
-        print("test1")
-        #self.sock.sendto("TYPE=SUBSCRIPTION_REQUEST".encode("ascii"),self.address)
 
     def send(self, order):
-        self.sock.sendto(order.toString().encode("ascii"),address)
+        self.sock.sendto(order.toString().encode("ascii"), self.address)
 
 
 class Order:
