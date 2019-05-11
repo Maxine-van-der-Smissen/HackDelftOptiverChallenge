@@ -44,7 +44,7 @@ while True:
 
         print(bid_price)
 
-        if feedcode == "ESX-FUTURE" and bid_price >= 3000:
+        """ if feedcode == "ESX-FUTURE" and bid_price >= 3000:
             order = Order(feedcode, "SELL", bid_price, 1)
             sock_eml.sendto(order.toString().encode("ascii"),address_eml)
            
@@ -71,7 +71,7 @@ while True:
                 print("Order Acknowledged!!!")
                 print(recieveData)
                 fields = recieveData.split('|')
-                print(fields[len(fields)-1])
+                print(fields[len(fields)-1]) """
 
    
 
