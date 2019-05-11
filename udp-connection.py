@@ -35,7 +35,7 @@ while True:
     elif data.find("TYPE=PRICE")==0:
          # Trade is shorter 5
         fields = data.split('|')
-        feedcode = fields[1]
+        feedcode = fields[1][9:]
         bid_price = float(re.search(r'\d+', fields[2]).group())
         bid_volume = int(re.search(r'\d+', fields[3]).group())
         ask_price = float(re.search(r'\d+', fields[4]).group())
@@ -44,27 +44,32 @@ while True:
 
         print(bid_price)
 
-        if bid_price >= 3090:
-            sock_eml.sendto(Order(feedcode, "SELL", bid_price, 1).toString().encode("ascii"),address_eml)
+        if feedcode == "ESX-FUTURE" and bid_price >= 3000:
+            order = Order(feedcode, "SELL", bid_price, 1)
+            sock_eml.sendto(order.toString().encode("ascii"),address_eml)
            
-            print("Order Send!")
+            print(order.toString())
             recieveData,a = sock_eml.recvfrom(1024)
             recieveData = recieveData.decode('utf-8')
 
             if recieveData.find("TYPE=ORDER_ACK")==0:
                 print("Order Acknowledged!!!")
+                print(recieveData)
                 fields = recieveData.split('|')
                 print(fields[len(fields)-1])
+            break
 
-        elif ask_price <= 3070:
-            sock_eml.sendto(Order(feedcode, "BUY", ask_price, 1).toString().encode("ascii"),address_eml)
+        elif feedcode == "ESX-FUTURE" and ask_price <= 3120:
+            order = Order(feedcode, "BUY", ask_price+5, 1)
+            sock_eml.sendto(order.toString().encode("ascii"),address_eml)
      
-            print("Order Send!")
+            print(order.toString())
             recieveData,a = sock_eml.recvfrom(1024)
             recieveData = recieveData.decode('utf-8')
     
             if recieveData.find("TYPE=ORDER_ACK")==0:
                 print("Order Acknowledged!!!")
+                print(recieveData)
                 fields = recieveData.split('|')
                 print(fields[len(fields)-1])
 

@@ -19,7 +19,7 @@ class Communication:
 class Order:
     def __init__(self, feedcode, action, price, volume):
         self.type = "ORDER"
-        self.username = ""
+        self.username = "Mr_Complex"
         self.feedcode = feedcode
         self.action = action
         self.price = price
