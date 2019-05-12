@@ -1,0 +1,6 @@
+framework module Pods_CreativeKitSample {
+  umbrella header "Pods-CreativeKitSample-umbrella.h"
+
+  export *
+  module * { export * }
+}
